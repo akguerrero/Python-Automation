@@ -2,10 +2,15 @@ import urllib.request
 
 url = 'https://www.example.com'
 
-response = urllib.request.urlopen(url)
+try:
 
-data = response.read()
+    response = urllib.request.urlopen(url)
 
-html_content = data.decode('utf-8')
+    data = response.read()
 
-print(html_content)
+    html_content = data.decode('utf-8')
+
+    print(html_content)
+    
+except Exception as e:
+    print("Error fetching URL:", e)
