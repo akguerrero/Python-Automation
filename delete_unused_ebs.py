@@ -1,9 +1,9 @@
 import boto3
 
 session = boto3.session.Session(profile_name='default', region_name='us-east-1')
+ec2 = session.resource('ec2')
 
 def delete_unused_ebs():
-    ec2 = session.resource('ec2')
     for volume in ec2.volumes.all():
 
         print(volume)

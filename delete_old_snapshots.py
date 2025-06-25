@@ -1,11 +1,10 @@
 import boto3
-from pprint import pprint
 from datetime import datetime, timedelta, timezone
 
 session = boto3.session.Session(profile_name="default", region_name="us-east-1")
+ec2 = session.client("ec2")
 
 def delete_old_snapshots():
-    ec2 = session.client("ec2")
     today = datetime.now(timezone.utc)
     retention_period = timedelta(days=180) # 6 months
     cutoff_date = today - retention_period
